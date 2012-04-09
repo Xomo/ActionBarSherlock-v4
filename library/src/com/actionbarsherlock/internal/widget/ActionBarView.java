@@ -474,12 +474,12 @@ public class ActionBarView extends AbsActionBarView {
                 oldParent.removeView(mMenuView);
             }
         }
-        if (mActionMenuPresenter == null) {
+//        if (mActionMenuPresenter == null) {
             mActionMenuPresenter = new ActionMenuPresenter(mContext);
             mActionMenuPresenter.setCallback(cb);
             mActionMenuPresenter.setId(R.id.abs__action_menu_presenter);
             mExpandedMenuPresenter = new ExpandedActionViewMenuPresenter();
-        }
+//        }
 
         ActionMenuView menuView;
         final LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
