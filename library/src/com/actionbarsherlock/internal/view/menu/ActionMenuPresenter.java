@@ -250,11 +250,13 @@ public class ActionMenuPresenter extends BaseMenuPresenter
                 ActionMenuView menuView = (ActionMenuView) mMenuView;
                 menuView.addView(mOverflowButton, menuView.generateOverflowButtonLayoutParams());
             }
-        } else if (mOverflowButton != null && mOverflowButton.getParent() == mMenuView) {
+        } else if (mMenuView!=null && mOverflowButton != null && mOverflowButton.getParent() == mMenuView) {
             ((ViewGroup) mMenuView).removeView(mOverflowButton);
         }
 
-        ((ActionMenuView) mMenuView).setOverflowReserved(mReserveOverflow);
+        if (mMenuView!=null) {
+           ((ActionMenuView) mMenuView).setOverflowReserved(mReserveOverflow);
+        }
     }
 
     @Override
