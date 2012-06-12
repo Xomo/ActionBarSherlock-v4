@@ -16,6 +16,10 @@
 
 package com.actionbarsherlock.internal.view.menu;
 
+import static com.actionbarsherlock.internal.ResourcesCompat.getResources_getInteger;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -36,12 +40,6 @@ import com.actionbarsherlock.internal.view.View_OnAttachStateChangeListener;
 import com.actionbarsherlock.internal.view.menu.ActionMenuView.ActionMenuChildView;
 import com.actionbarsherlock.view.ActionProvider;
 import com.actionbarsherlock.view.MenuItem;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
-import static com.actionbarsherlock.internal.ResourcesCompat.getResources_getInteger;
 
 /**
  * MenuPresenter for building action menus as seen in the action bar and action modes.
@@ -252,13 +250,11 @@ public class ActionMenuPresenter extends BaseMenuPresenter
                 ActionMenuView menuView = (ActionMenuView) mMenuView;
                 menuView.addView(mOverflowButton, menuView.generateOverflowButtonLayoutParams());
             }
-        } else if (mMenuView != null && mOverflowButton != null && mOverflowButton.getParent() == mMenuView) {
+        } else if (mOverflowButton != null && mOverflowButton.getParent() == mMenuView) {
             ((ViewGroup) mMenuView).removeView(mOverflowButton);
         }
 
-        if (mMenuView != null) {
-            ((ActionMenuView) mMenuView).setOverflowReserved(mReserveOverflow);
-        }
+        ((ActionMenuView) mMenuView).setOverflowReserved(mReserveOverflow);
     }
 
     @Override
@@ -305,7 +301,6 @@ public class ActionMenuPresenter extends BaseMenuPresenter
 
     /**
      * Display the overflow menu if one is present.
-     *
      * @return true if the overflow menu was shown, false otherwise.
      */
     public boolean showOverflowMenu() {
@@ -347,7 +342,6 @@ public class ActionMenuPresenter extends BaseMenuPresenter
 
     /**
      * Dismiss all popup menus - overflow and submenus.
-     *
      * @return true if popups were dismissed, false otherwise. (This can be because none were open.)
      */
     public boolean dismissPopupMenus() {
@@ -642,7 +636,7 @@ public class ActionMenuPresenter extends BaseMenuPresenter
 
     private class OverflowPopup extends MenuPopupHelper {
         public OverflowPopup(Context context, MenuBuilder menu, View anchorView,
-                             boolean overflowOnly) {
+                boolean overflowOnly) {
             super(context, menu, anchorView, overflowOnly);
             setCallback(mPopupPresenterCallback);
         }
